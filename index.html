@@ -215,6 +215,7 @@
   <main class="resume">
     <section class="main">
       <header class="hero">
+        <button type="button" id="download-resume">download</button>
         <h1>Javad <span>Ghased</span></h1>
         <p class="role">SENIOR FRONT-END DEVELOPER</p>
         <p class="intro">I specialize in developing scalable and maintainable apps that prioritize code readability and adhere to SOLID principles.</p>
@@ -226,7 +227,7 @@
         <article class="experience">
           <div class="job-heading">
             <div><span class="company">OMPFinex</span> - <span class="job-type">On-site</span></div>
-            <time class="date" datetime="2022-06"><bdi id="omp-duration" style="font-size: .8rem; color:gray;"></bdi> Jun 2022</time>
+            <time class="date" datetime="2022-06">Jun 2022 - present <bdi id="omp-duration" style="font-size: .8rem; color:gray;"></bdi></time>
           </div>
           <ul class="details">
             <li>Implemented <em>Domain-Driven-Design</em> &amp; anti-corruption layer principles, leveraging the Nx monorepo tool to enhance project development.</li>
@@ -238,7 +239,7 @@
 
         <article class="experience">
           <div class="job-heading">
-            <div><span class="company">Illiasystem</span> - <span class="job-type">On-site</span></div>
+            <div><span class="company">Iliasystem</span> - <span class="job-type">On-site</span></div>
             <time class="date" datetime="2019-08">Aug 2019 - Feb 2022 <span style="font-size: .8rem; color: gray">(~2.5 Years)</span></time>
           </div>
           <ul class="details">
@@ -249,7 +250,8 @@
 
         <article class="experience">
           <div class="job-heading">
-            <div><span class="company">Freelance</span></div>
+            <div><span class="company">Freelance</span> - <span class="job-type">Hybrid</span></div>
+            <time class="date" datetime="2019-08">March 2018 - Aug 2019</time>
           </div>
           <ul class="details">
             <li>Implemented a dockerized, full e-commerce website using Astro, React &amp; Ark UI, using latest and most efficient practices.</li>
@@ -264,7 +266,7 @@
         <div class="contact-mark">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24"><path style="fill: var(--gold);" d="M320 72C183 72 72 183 72 320C72 457 183 568 320 568C457 568 568 457 568 320C568 183 457 72 320 72zM435 240.7C431.3 279.9 415.1 375.1 406.9 419C403.4 437.6 396.6 443.8 390 444.4C375.6 445.7 364.7 434.9 350.7 425.7C328.9 411.4 316.5 402.5 295.4 388.5C270.9 372.4 286.8 363.5 300.7 349C304.4 345.2 367.8 287.5 369 282.3C369.2 281.6 369.3 279.2 367.8 277.9C366.3 276.6 364.2 277.1 362.7 277.4C360.5 277.9 325.6 300.9 258.1 346.5C248.2 353.3 239.2 356.6 231.2 356.4C222.3 356.2 205.3 351.4 192.6 347.3C177.1 342.3 164.7 339.6 165.8 331C166.4 326.5 172.5 322 184.2 317.3C256.5 285.8 304.7 265 328.8 255C397.7 226.4 412 221.4 421.3 221.2C423.4 221.2 427.9 221.7 430.9 224.1C432.9 225.8 434.1 228.2 434.4 230.8C434.9 234 435 237.3 434.8 240.6z"/></svg>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24"><path style="fill: var(--gold);" d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/></svg></div>
-          <div style="display: flex; flex-direction: column; gap: 8px;"><p>Telegram: <a href="https://t.me/djawadg">djawadg</a></p><p><a href="mailto:ghasedjavad@gmail.com">ghasedjavad@gmail.com</a></p></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><p>Telegram: <a href="https://t.me/djawadg" id="tlg">@djawadg</a></p><p><a href="mailto:ghasedjavad@gmail.com" id="email">ghasedjavad@gmail.com</a></p></div>
       </div>
 
 
@@ -294,8 +296,8 @@
       <section class="side-section" aria-labelledby="links-title">
         <h2 id="links-title" class="section-title">LINKS</h2>
         <ul class="link-list">
-          <li><a href="https://github.com/djawad98">github.com/djawad98</a></li>
-          <li><a href="https://linkedin.com/in/javad-ghased/">linkedin.com/in/javad-ghased/</a></li>
+          <li><a href="https://github.com/djawad98" id="github">github.com/djawad98</a></li>
+          <li><a href="https://linkedin.com/in/javad-ghased/" id="linkedin">linkedin.com/in/javad-ghased/</a></li>
         </ul>
       </section>
     </aside>
@@ -313,17 +315,176 @@
     while(mod > 0){
       if(mod >= ONE_YEAR){
         const fullYears = Math.floor(mod/ONE_YEAR);
-        text.push(fullYears + ' Years');
+        text.push(fullYears + 'Y');
         mod -= ONE_YEAR * fullYears;
       } else if (mod >= ONE_MONTH){
         const fullMonths = Math.floor(mod/ONE_MONTH);
-        text.push(fullMonths + ' Months')
+        text.push(fullMonths + 'M')
         mod -= ONE_MONTH * fullMonths;
       } else {
         break;
       }
     }
-    durationEl.innerHTML = text.join(" and ");
+    durationEl.innerHTML = "(" + text.join(" and ") + ")";
+  </script>
+  <script src="./jspdf.umd.min.js"></script>
+  <script>
+    document.querySelector("#download-resume").onclick = () => {
+      const name = document.querySelector("h1").innerText;
+      const role = document.querySelector(".role").innerText;
+      const intro = document.querySelector(".intro").innerText;
+      const telegramEl = document.querySelector("#tlg");
+      const telegram = telegramEl.innerText;
+      const telegramURL = telegramEl.getAttribute('href');
+      const email = document.querySelector("#email").innerText;
+      const github = document.querySelector("#github").getAttribute('href');
+      const linkedin = document.querySelector("#linkedin").getAttribute('href');
+
+
+      const fontSize = 12;
+      const fontFamily = 'helvetica';
+      const lineHeight = 1;
+      const margin = 40;
+      const indent = 20;
+      const COLORS = {
+        ink: '#333',
+        muted: '#999',
+        gold: '#e2c051'
+      }
+
+      const {jsPDF} = window.jspdf;
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        format: 'a4',
+        unit: 'pt',
+        compress: true
+      });
+
+      const pageWidth = doc.internal.pageSize.getWidth() - (2*margin);
+      const pageHeight = doc.internal.pageSize.getHeight() - (2*margin);
+
+      doc.setProperties({
+        title: 'Javad Ghased - Senior Frontend Developer',
+        subject: 'Javad Ghased\'s Resume',
+        author: 'Javad Ghased',
+        keywords: 'resume, frontend, ghased, javad, developer',
+      });
+
+
+      doc.setFont(fontFamily, 'normal');
+      doc.setFontSize(fontSize);
+      doc.setTextColor(COLORS.ink);
+
+      let x = margin;
+      let y = margin + (lineHeight * fontSize);
+
+      // NAME
+      addText(name, {size: fontSize * 2.5, isBold: true})
+
+      // ROLE
+      addText(role, {marginBottom: 5})
+
+      // CONTACTS
+      addText("Telegram: ",{isInline: true})
+      addText(telegram,{isInline: true, url: telegramURL , isBold: true})
+      addText(" | Email: ",{isInline: true})
+      addText(email,{url: 'mailto:'+email, isBold: true, isInline: true})
+      addText(' | ',{isInline: true})
+      addText('Github',{url: github, isBold: true, isInline: true})
+      addText(' | ',{isInline: true})
+      addText('LinkedIn',{url: linkedin, isBold: true})
+
+      addHeadline('Summary')
+      addText(intro)
+
+      addHeadline('Experiences')
+      document.querySelectorAll('.experience').forEach(item => {
+        addText(item.querySelector(".company").innerText, {isBold: true, isInline: true})
+        addText(" - " + item.querySelector(".job-type").innerText.toLowerCase(), {isInline: true, color: COLORS.muted})
+        addText(" " + item.querySelector("time").innerText, {marginBottom: 8})
+        item.querySelectorAll('.details li').forEach(det => {
+          addBullet(det.innerText)
+        })
+        addLine({color: '#bbb', tickness: 1})
+      })
+
+
+      addHeadline('Skills')
+      document.querySelectorAll(".skill-list li").forEach(skill => {
+        inlineBullet(skill.innerText)
+      })
+
+
+
+      doc.save('javad-ghased-resume.pdf');
+
+
+      function addText(text, options = {}){
+        const {size = fontSize,color, family = fontFamily, isBold = false, marginBottom = 0, marginEnd = 0, isInline = false, url, maxWidth} = options;
+        doc.setFont(family, isBold ? 'bold' : 'normal');
+        doc.setFontSize(size);
+        doc.setLineHeightFactor(lineHeight);
+        doc.setTextColor(color || COLORS.ink);
+        if(options.hasOwnProperty('url')){
+          doc.textWithLink(text, x, y, {url: url});
+        } else {
+          doc.text(text, x, y, {maxWidth: maxWidth || pageWidth});
+        }
+
+        if(isInline) {
+          x += doc.getTextWidth(text) + marginEnd;
+          return;
+        }
+
+        const lines = doc.splitTextToSize(text,maxWidth || pageWidth).length;
+        const height = size * lineHeight * lines + marginBottom;
+        y += height;
+        resetX()
+      }
+
+      function addHeadline(text){
+        y += margin ;
+        addText(text, {isInline: false, isBold:true, size: fontSize * 1.2});
+        addLine()
+      }
+
+      function addLine(options = {}){
+        const {tickness, color} = options;
+        resetX()
+        doc.setLineWidth(tickness ?? 2);
+        doc.setDrawColor(color || COLORS.ink)
+        doc.line(x, y, pageWidth + x, y);
+        y += margin/2;
+      }
+
+      function addBullet(text){
+        x += indent;
+        drawBullet();
+        addText(text, {maxWidth: pageWidth - indent, marginBottom: 4});
+        resetX()
+      }
+
+      function inlineBullet(text){
+        if(doc.getTextWidth(text) + x > pageWidth) {
+          resetX();
+          y += fontSize * lineHeight + 10;
+        }
+        drawBullet();
+        addText(text, {maxWidth: pageWidth, marginEnd: 10, isInline: true});
+      }
+
+      function drawBullet(){
+        doc.setFillColor(COLORS.gold)
+        doc.rect(x -5 ,y - 5, 4, 4, "F")
+        x += 5;
+
+      }
+
+      function resetX(){
+        x = margin;
+      }
+    }
+
   </script>
 </body>
 </html>
