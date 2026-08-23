@@ -343,7 +343,7 @@
 
       const fontSize = 12;
       const fontFamily = 'helvetica';
-      const lineHeight = 1;
+      const lineHeight = 1.4;
       const margin = 40;
       const indent = 20;
       const COLORS = {
@@ -379,10 +379,11 @@
       let y = margin + (lineHeight * fontSize);
 
       // NAME
-      addText(name, {size: fontSize * 2.5, isBold: true})
+      addText('Javad', {size: fontSize * 2.5, isBold: true, isInline: true, marginEnd: 5})
+      addText('Ghased', {size: fontSize * 2.5, isBold: true, color: COLORS.gold, marginBottom: -20})
 
       // ROLE
-      addText(role, {marginBottom: 5})
+      addText(role, {marginBottom: 10})
 
       // CONTACTS
       addText("Telegram: ",{isInline: true})
@@ -398,13 +399,14 @@
       addText(intro)
 
       addHeadline('Experiences')
-      document.querySelectorAll('.experience').forEach(item => {
+      document.querySelectorAll('.experience').forEach((item, index, items) => {
         addText(item.querySelector(".company").innerText, {isBold: true, isInline: true})
         addText(" - " + item.querySelector(".job-type").innerText.toLowerCase(), {isInline: true, color: COLORS.muted})
         addText(" " + item.querySelector("time").innerText, {marginBottom: 8})
         item.querySelectorAll('.details li').forEach(det => {
           addBullet(det.innerText)
         })
+        if(index === items.length -1) return;
         addLine({color: '#bbb', tickness: 1})
       })
 
@@ -443,7 +445,7 @@
       }
 
       function addHeadline(text){
-        y += margin ;
+        y += margin /2;
         addText(text, {isInline: false, isBold:true, size: fontSize * 1.2});
         addLine()
       }
