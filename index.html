@@ -203,11 +203,22 @@
       .details, .skill-list, .link-list { font-size: .92rem; }
     }
 
-    @media print {
-      body { background: white; }
-      .resume { width: 100%; box-shadow: none; }
-      .main, .side { padding: 34px; }
-      .no-print {display: none!important;}
+    #download-resume {
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      padding: 8px 16px;
+      color:#505050;
+      margin-bottom: 20px;
+      background: var(--gold);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      transition: background .1s ease-in-out;
+    }
+
+    #download-resume:hover {
+      background: var(--panel)
     }
   </style>
 </head>
@@ -215,7 +226,6 @@
   <main class="resume">
     <section class="main">
       <header class="hero">
-        <button type="button" id="download-resume">download</button>
         <h1>Javad <span>Ghased</span></h1>
         <p class="role">SENIOR FRONT-END DEVELOPER</p>
         <p class="intro">I specialize in developing scalable and maintainable apps that prioritize code readability and adhere to SOLID principles.</p>
@@ -262,6 +272,11 @@
     </section>
 
     <aside class="side">
+      <button type="button" id="download-resume">
+        <svg width="24" height="24" viewBox="0 0 640 640"><path fill="currentColor" d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM303 505C312.4 514.4 327.6 514.4 336.9 505L400.9 441C410.3 431.6 410.3 416.4 400.9 407.1C391.5 397.8 376.3 397.7 367 407.1L344 430.1L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 430.1L273 407.1C263.6 397.7 248.4 397.7 239.1 407.1C229.8 416.5 229.7 431.7 239.1 441L303.1 505z"/></svg>
+        <span>DOWNLOAD MY RESUME</span>
+      </button>
+
       <div class="contact">
         <div class="contact-mark">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24"><path style="fill: var(--gold);" d="M320 72C183 72 72 183 72 320C72 457 183 568 320 568C457 568 568 457 568 320C568 183 457 72 320 72zM435 240.7C431.3 279.9 415.1 375.1 406.9 419C403.4 437.6 396.6 443.8 390 444.4C375.6 445.7 364.7 434.9 350.7 425.7C328.9 411.4 316.5 402.5 295.4 388.5C270.9 372.4 286.8 363.5 300.7 349C304.4 345.2 367.8 287.5 369 282.3C369.2 281.6 369.3 279.2 367.8 277.9C366.3 276.6 364.2 277.1 362.7 277.4C360.5 277.9 325.6 300.9 258.1 346.5C248.2 353.3 239.2 356.6 231.2 356.4C222.3 356.2 205.3 351.4 192.6 347.3C177.1 342.3 164.7 339.6 165.8 331C166.4 326.5 172.5 322 184.2 317.3C256.5 285.8 304.7 265 328.8 255C397.7 226.4 412 221.4 421.3 221.2C423.4 221.2 427.9 221.7 430.9 224.1C432.9 225.8 434.1 228.2 434.4 230.8C434.9 234 435 237.3 434.8 240.6z"/></svg>
@@ -329,7 +344,11 @@
   </script>
   <script src="./jspdf.umd.min.js"></script>
   <script>
-    document.querySelector("#download-resume").onclick = () => {
+    const dlButton = document.querySelector("#download-resume");
+    const initialButtonValue= dlButton.querySelector("span").innerText;
+    dlButton.onclick = () => {
+      dlButton.setAttribute('disabled','disabled')
+      dlButton.querySelector("span").innerText = 'Creating PDF...';
       const name = document.querySelector("h1").innerText;
       const role = document.querySelector(".role").innerText;
       const intro = document.querySelector(".intro").innerText;
@@ -417,8 +436,9 @@
       })
 
 
-
       doc.save('javad-ghased-resume.pdf');
+      dlButton.querySelector("span").innerText = initialButtonValue;
+      dlButton.removeAttribute('disabled')
 
 
       function addText(text, options = {}){
