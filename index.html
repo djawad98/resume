@@ -251,7 +251,7 @@
             <li>Led and managed <em>Framework Migration</em> process, to move on from Angular to Svelte. <a href="https://medium.com/@ghased/project-manhattan-how-we-migrated-from-angular-to-svelte-gradually-f7ccb772a7f6">Medium article</a>.</li>
             <li>Implemented <em>domain-driven-design</em> & anti-corruption layer principles, leveraging the Nx monorepo tool to enhance project development.</li>
             <li>Refactored <em>state-management system</em> in order to have more predictable software behaviour using RxJS and Flux pattern. <a href="https://medium.com/@ghased/you-do-not-need-complex-state-management-use-my-framework-agnostic-version-of-redux-5924730c0c79">Medium article</a>.</li>
-            <li>Proposed +5 document to use AI solutions for development workflows.</li>
+            <li>Proposed multiple documents to use AI solutions for development workflows.</li>
             <li>Reviewed +200 merge requests, including feature development, bug fixes, and refactors.</li>
           </ul>
         </article>
@@ -301,7 +301,7 @@
           <li>Nodejs</li>
           <li>TDD w/ Jest</li>
           <li>Domain-Driven-Design</li>
-          <li>Monorepo \w Nx</li>
+          <li>Monorepo \w Nx and pnpm</li>
           <li>Tailwindcss</li>
           <li>Headless UI (Melt, Ark, Shadcn etc.)</li>
           <li>Docker</li>
@@ -426,10 +426,17 @@
       addHeadline('Experiences')
       document.querySelectorAll('.experience').forEach((item, index, items) => {
         addText(item.querySelector(".company").innerText, {isBold: true, isInline: true})
-        addText(" - " + item.querySelector(".job-type").innerText.toLowerCase(), {isInline: true, color: COLORS.muted})
+        addText(" - " + item.querySelector(".job-type").innerText, {isInline: true, color: COLORS.muted})
         addText(" " + item.querySelector("time").innerText, {marginBottom: 8})
         item.querySelectorAll('.details li').forEach(det => {
-          addBullet(det.innerText)
+          let url = Array.from(det.innerHTML.matchAll(/href="(.*)"/ig));
+          console.log(url)
+          if(url[0] && url[0][1]){
+            url = url[0][1];
+          } else {
+            url = undefined
+          }
+          addBullet(det.innerText, url)
         })
         if(index === items.length -1) return;
         addLine({color: '#bbb', tickness: 1})
@@ -449,12 +456,14 @@
 
       function addText(text, options = {}){
         const {size = fontSize,color, family = fontFamily, isBold = false, marginBottom = 0, marginEnd = 0, isInline = false, url, maxWidth} = options;
-        doc.setFont(family, isBold ? 'bold' : 'normal');
-        doc.setFontSize(size);
-        doc.setLineHeightFactor(lineHeight);
-        doc.setTextColor(color || COLORS.ink);
+        doc.setFont(family, isBold ? 'bold' : 'normal')
+          .setFontSize(size)
+          .setLineHeightFactor(lineHeight)
+          .setTextColor(color || COLORS.ink);
+
+
         if(options.hasOwnProperty('url')){
-          doc.textWithLink(text, x, y, {url: url});
+          doc.textWithLink(text, x, y, {url: url, maxWidth: maxWidth || pageWidth});
         } else {
           doc.text(text, x, y, {maxWidth: maxWidth || pageWidth});
         }
@@ -479,16 +488,16 @@
       function addLine(options = {}){
         const {tickness, color} = options;
         resetX()
-        doc.setLineWidth(tickness ?? 2);
-        doc.setDrawColor(color || COLORS.ink)
-        doc.line(x, y, pageWidth + x, y);
+        doc.setLineWidth(tickness ?? 2)
+          .setDrawColor(color || COLORS.ink)
+          .line(x, y, pageWidth + x, y);
         y += margin/2;
       }
 
-      function addBullet(text){
+      function addBullet(text, url){
         x += indent;
         drawBullet();
-        addText(text, {maxWidth: pageWidth - indent, marginBottom: 4});
+        addText(text, {maxWidth: pageWidth - indent, marginBottom: 4, url});
         resetX()
       }
 
@@ -503,9 +512,8 @@
 
       function drawBullet(){
         doc.setFillColor(COLORS.gold)
-        doc.rect(x -5 ,y - 5, 4, 4, "F")
+          .rect(x -5 ,y - 5, 4, 4, "F");
         x += 5;
-
       }
 
       function resetX(){
