@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Javad Ghased's Resume - Senior frontend developer"/>
   <title>Javad Ghased — Senior Front-End Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,7 +229,7 @@
       <header class="hero">
         <h1>Javad <span>Ghased</span></h1>
         <p class="role">SENIOR FRONT-END DEVELOPER</p>
-        <p class="intro">I specialize in developing scalable and maintainable apps that prioritize code readability and adhere to SOLID principles.</p>
+        <p class="intro">I love turning coffee and curiosity into production-ready architectures. I enjoy making my work easier with AI tools. I also enjoy trying new tools before they become everyone’s favorite.</p>
       </header>
 
       <section aria-labelledby="experience-title">
@@ -236,20 +237,21 @@
 
         <article class="experience">
           <div class="job-heading">
-            <div><span class="company">OMPFinex</span> - <span class="job-type">On-site</span></div>
+            <div><span class="company">OMPFinex</span> - <span class="job-type">Senior Developer</span></div>
             <time class="date" datetime="2022-06">Jun 2022 - present <bdi id="omp-duration" style="font-size: .8rem; color:gray;"></bdi></time>
           </div>
           <ul class="details">
-            <li>Implemented <em>Domain-Driven-Design</em> &amp; anti-corruption layer principles, leveraging the Nx monorepo tool to enhance project development.</li>
-            <li>Refactored state-management system in order to have more predictable software behaviour using RxJS and Flux pattern.</li>
-            <li>Led and managed <em>Wallet</em> domain development team.</li>
-            <li>Reviewed +200 merge requests encompassing feature development, bug fixes, and refactors.</li>
+            <li>Led and managed <em>Framework Migration</em> process, to move on from Angular to Svelte. <a href="https://medium.com/@ghased/project-manhattan-how-we-migrated-from-angular-to-svelte-gradually-f7ccb772a7f6">Medium article</a>.</li>
+            <li>Implemented <em>domain-driven-design</em> & anti-corruption layer principles, leveraging the Nx monorepo tool to enhance project development.</li>
+            <li>Refactored <em>state-management system</em> in order to have more predictable software behaviour using RxJS and Flux pattern. <a href="https://medium.com/@ghased/you-do-not-need-complex-state-management-use-my-framework-agnostic-version-of-redux-5924730c0c79">Medium article</a>.</li>
+            <li>Proposed +5 document to use AI solutions for development workflows.</li>
+            <li>Reviewed +200 merge requests, including feature development, bug fixes, and refactors.</li>
           </ul>
         </article>
 
         <article class="experience">
           <div class="job-heading">
-            <div><span class="company">Iliasystem</span> - <span class="job-type">On-site</span></div>
+            <div><span class="company">Iliasystem</span> - <span class="job-type">Mid-level Developer</span></div>
             <time class="date" datetime="2019-08">Aug 2019 - Feb 2022 <span style="font-size: .8rem; color: gray">(~2.5 Years)</span></time>
           </div>
           <ul class="details">
@@ -260,12 +262,11 @@
 
         <article class="experience">
           <div class="job-heading">
-            <div><span class="company">Freelance</span> - <span class="job-type">Hybrid</span></div>
-            <time class="date" datetime="2019-08">March 2018 - Aug 2019</time>
+            <div><span class="company">Freelance</span><span class="job-type"></span></div>
+            <time class="date" datetime="2019-08"></time>
           </div>
           <ul class="details">
-            <li>Implemented a dockerized, full e-commerce website using Astro, React &amp; Ark UI, using latest and most efficient practices.</li>
-            <li>So many other projects available in my portfolio.</li>
+            <li>Implemented a dockerized, full e-commerce website using Astro, React & Ark UI, using latest and most efficient practices.</li>
           </ul>
         </article>
       </section>
@@ -288,23 +289,21 @@
       <section class="side-section" aria-labelledby="skills-title">
         <h2 id="skills-title" class="section-title">SKILLS</h2>
         <ul class="skill-list">
-          <li>Angular, React, Vue</li>
-          <li>Nodejs</li>
+          <li>Angular, Svelte, React</li>
           <li>Astro</li>
-          <li>Tailwindcss</li>
-          <li>Reactive Programming (Flux)</li>
-          <li>Headless UI (Melt, Ark, etc.)</li>
+          <li>Nodejs</li>
           <li>TDD w/ Jest</li>
-          <li>CSS Preprocessors</li>
-          <li>Anti-corruption layer</li>
           <li>Domain-Driven-Design</li>
           <li>Monorepo \w Nx</li>
-          <li>Git &amp; GitFlow</li>
+          <li>Tailwindcss</li>
+          <li>Headless UI (Melt, Ark, Shadcn etc.)</li>
           <li>Docker</li>
-          <li>Agile</li>
-          <li>Critical Rendering Path &amp; SEO</li>
+          <li>Critical Rendering Path & SEO</li>
           <li>MCP Server Development</li>
+          <li>AI Agents and Skills</li>
           <li>Workflow Automation w/ n8n</li>
+          <li>Git & GitFlow</li>
+          <li>Agile</li>
         </ul>
       </section>
 
@@ -342,7 +341,7 @@
     }
     durationEl.innerHTML = "(" + text.join(" and ") + ")";
   </script>
-  <script src="./jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
   <script>
     const dlButton = document.querySelector("#download-resume");
     const initialButtonValue= dlButton.querySelector("span").innerText;
